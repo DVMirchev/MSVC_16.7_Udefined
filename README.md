@@ -1,5 +1,9 @@
 # MSVC_16.7_Udefined
 error C2065: 't': undeclared identifier with /std:c++latest, works with /std:c++17
+
+Reported here:
+https://developercommunity.visualstudio.com/content/problem/1142340/code-compiles-with-stdc17-error-c2065-t-undeclared.html
+
 ```
 #include <iostream>
 #include <tuple>
