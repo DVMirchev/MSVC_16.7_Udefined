@@ -3,9 +3,6 @@
 
 #include <iostream>
 #include <tuple>
-#include <type_traits>
-#include <utility>
-#include <functional>
 
 template<typename Callable, typename... Args>
 decltype(auto)
@@ -16,7 +13,7 @@ Boind(Callable&& f, Args&&... args)
        t = std::make_tuple(std::forward<Args>(args)...)](
          auto&&... args) mutable
       {
-         // compile error here wit /std:c++latest
+         // compile error here with /std:c++latest
          //
          // error C2065: 't': undeclared identifier
          //
@@ -25,16 +22,17 @@ Boind(Callable&& f, Args&&... args)
 
          return std::apply(
             f,
-            t);
+            t); // <- No apparent problem here
       };
 }
 
-auto alabala(int a, int b)
-{
+auto
+alabala(int a, int b) {
    return a + b;
 }
-int main()
-{
+
+int
+main() {
     auto c = Boind(alabala, 1, 2)();
     std::cout << c;
 }
